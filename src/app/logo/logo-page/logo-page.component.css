@@ -1,0 +1,26 @@
+.main-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #f7f7f7, #d0e7ff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container h1 {
+    font-size: 4rem;
+    color: #2c3e50;
+    border-right: 4px solid #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink-cursor 0.8s steps(1) infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #2c3e50;
+    }
+}

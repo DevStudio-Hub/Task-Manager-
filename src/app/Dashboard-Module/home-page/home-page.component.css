@@ -1,0 +1,154 @@
+.home-comtener {
+  height: 100%;
+  padding: 50px;
+  background-color: #f5f5f5;
+}
+
+.nav-contener {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.add-task {
+  height: 30px;
+  width: 80px;
+  background-color: rgb(0, 128, 0);
+  border: none;
+  border-radius: 5px;
+}
+
+.add-task:hover {
+  background-color: rgb(2, 94, 2);
+}
+.slide-bar {
+  width: 220px;
+  height: 530px;
+
+  box-shadow: 5px 5px 5px 5px #888888;
+  border-radius: 5px;
+  background-color: white;
+}
+.slide-bar ul {
+  list-style: none;
+}
+
+.slide-bar ul li {
+  font-size: 20px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+}
+.slide-bar ul li p {
+  font-size: 20px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+.slide-bar ul li.active {
+  background-color: #5f7bf8;
+}
+.content {
+  position: relative;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  left: 250px;
+  background-color: white;
+  box-shadow: 3px 3px 3px 3px #888888;
+  border: none;
+  border-radius: 3px;
+  height: 60px;
+  padding: 15px;
+  justify-content: space-between;
+  max-width: calc(100% - 270px);
+  box-sizing: border-box;
+}
+
+.search-box input {
+  height: 30px;
+  width: 70%;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.task-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 19px;
+  top: 80px;
+  width: 80%;
+  min-width: 480px;
+  height: 446px;
+  overflow: auto;
+}
+
+.task-card {
+  background-color: white;
+  padding-left: 10px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.task-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.task-card p {
+  margin: 0 0 12px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+.status {
+  display: inline-block;
+  background-color: #5f7bf8;
+  color: white;
+  padding: 2px 2px;
+  border-radius: 5px;
+  text-align: center;
+  
+  
+}
+
+.edit-btn,
+.delete-btn {
+  margin-right: 10px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: #ffa500;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.buttontype {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn{
+  height: 30px;
+ width: 100px;
+ margin-bottom: 5px;
+}

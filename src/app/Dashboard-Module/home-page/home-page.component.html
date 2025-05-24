@@ -1,1 +1,37 @@
-<p>home-page works!</p>
+<div class="home-comtener">
+  <div class="nav-contener">
+    <h1>Task Manager</h1>
+    <button class="add-task" routerLink="/add-item">Add Task</button>
+  </div>
+  <div class="content">
+    <div class="slide-bar">
+      <ul>
+        <li
+          *ngFor="let item of sideBarIems"
+          (click)="setActive(item)"
+          [ngClass]="{ active: activeBar === item }"
+        >
+          <p>{{ item }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search task..." />
+    </div>
+
+    <div class="task-container">
+      <div class="task-card" *ngFor="let task of tasks">
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+        <div class="buttontype">
+          <span class="status btn">{{ task.status }}</span>
+          <button class="edit-btn btn">Edit</button>
+          <button class="delete-btn btn">Delete</button>
+        </div>
+
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
