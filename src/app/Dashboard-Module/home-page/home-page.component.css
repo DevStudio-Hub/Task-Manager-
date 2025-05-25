@@ -157,7 +157,7 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .edit-btn,
@@ -169,6 +169,7 @@ body {
   font-weight: bold;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .edit-btn {
@@ -179,4 +180,10 @@ body {
 .delete-btn {
   background-color: #dc3545;
   color: white;
+}
+
+
+.edit-btn:hover,
+.delete-btn:hover{
+  transform: scale(0.97);
 }
