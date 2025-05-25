@@ -6,7 +6,8 @@
   
     <label for="description">Task Description:</label>
     <textarea id="description" name="description" [(ngModel)]="formdata.description" required></textarea>
-  
+    <label for="date">Task Date:</label>
+    <input type="date" id="date" name="date" [(ngModel)]="formdata.date" required />
     <label for="status">Task Status:</label>
     <select id="status" name="status" [(ngModel)]="formdata.status">
       <option value="Pending">Pending</option>

@@ -2,8 +2,8 @@
   <div class="nav-contener">
     <h1>Task Manager</h1>
     <button class="add-task" routerLink="/add-item">Add Task</button>
-  </div>
-  <div class="content">
+  </div><div class="content">
+    
     <div class="slide-bar">
       <ul>
         <li
@@ -15,26 +15,31 @@
         </li>
       </ul>
     </div>
+  
     <div class="conenet-inner">
       <div class="search-box">
-        <input type="text" placeholder="Search task..." />
+        <input type="text" placeholder="Search task..." [(ngModel)]="search"/>
       </div>
   
-      <div class="task-container">
-        <div class="task-card" *ngFor="let task of tasks">
+     
+      <div class="task-container" *ngIf="tasks.length > 0; else noTask">
+        <div class="task-card" *ngFor="let task of searchItem">
           <h3>{{ task.title }}</h3>
           <p>{{ task.description }}</p>
+          <p>{{ task.date }}</p>
           <div class="buttontype">
             <span class="status btn">{{ task.status }}</span>
             <button class="edit-btn btn">Edit</button>
-            <button class="delete-btn btn">Delete</button>
+            <button class="delete-btn btn" (click)="onDeleteTask(task.title)">Delete</button>
           </div>
-  
           <hr />
         </div>
       </div>
+  
+     
+      <ng-template #noTask>
+        <p style="text-align: center; margin-top: 20px;">No task available. Add a task to get started.</p>
+      </ng-template>
     </div>
-
-    
   </div>
-</div>
+  
