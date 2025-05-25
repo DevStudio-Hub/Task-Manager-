@@ -1,0 +1,29 @@
+.profile-body{
+  height: 100%;
+  padding: 25px;
+
+}
+
+.profile-head{
+  display: flex;
+  padding: 10px;
+  height: 160px;
+  position: relative;
+}
+
+.profile-picture{
+  height: 140px;
+  width: 140px;
+  display: flex;
+  position: absolute;
+  left: 30px;
+
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
