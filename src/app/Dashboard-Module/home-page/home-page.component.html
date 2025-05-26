@@ -1,7 +1,7 @@
 <div class="home-comtener">
   <div class="nav-contener">
     <h1>Task Manager</h1>
-    <button class="add-task" routerLink="/add-item">Add Task</button>
+    <button class="add-task" (click)="onAddTask()">Add Task</button>
   </div><div class="content">
     
     <div class="slide-bar">
@@ -29,7 +29,7 @@
           <p>{{ task.date }}</p>
           <div class="buttontype">
             <span class="status btn">{{ task.status }}</span>
-            <button class="edit-btn btn">Edit</button>
+            <button class="edit-btn btn" (click)="onEditTask(task.title)">Edit</button>
             <button class="delete-btn btn" (click)="onDeleteTask(task.title)">Delete</button>
           </div>
           <hr />
