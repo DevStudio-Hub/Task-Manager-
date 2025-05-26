@@ -12,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent implements OnInit {
+  
   constructor(private taskService: TaskService, private Router: Router) {}
 
   sideBarIems = [
@@ -42,6 +43,12 @@ export class HomePageComponent implements OnInit {
   onAddTask() {
     this.taskService.clearUpdateTask();
     this.Router.navigate(['/add-item']);
+  }
+  
+
+  onLogin() {
+  
+    this.Router.navigate(['/login']);
   }
 
   ngOnInit() {

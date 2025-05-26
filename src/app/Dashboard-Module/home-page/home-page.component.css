@@ -25,7 +25,7 @@ body {
   margin-bottom: 30px;
 }
 
-.add-task {
+.add-task,.Login-btn {
   height: 35px;
   width: 100px;
   background-color: #28a745;
@@ -37,7 +37,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.add-task:hover {
+.add-task,.Login-btn:hover {
   background-color: #1e7e34;
 }
 
