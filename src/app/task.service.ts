@@ -34,5 +34,8 @@ updateExistingTask(updatedTask: any) {
     this.tasks[index] = updatedTask;
   }
 }
+deleteTaskByTitle(title: string) {
+  this.tasks = this.tasks.filter(task => task.title !== title);
+}
 
 }

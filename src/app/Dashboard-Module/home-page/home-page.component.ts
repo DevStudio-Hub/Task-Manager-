@@ -66,8 +66,10 @@ export class HomePageComponent implements OnInit {
   }
 
   onDeleteTask(taskTitle: string) {
+    this.taskService.deleteTaskByTitle(taskTitle);
     this.tasks = this.tasks.filter((task) => task.title !== taskTitle);
   }
+
   search = '';
   get searchItem() {
     let filtered = this.tasks.filter((item) =>
