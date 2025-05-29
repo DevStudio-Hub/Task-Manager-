@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "dist/task-manager",
             "index": "src/index.html",
+           
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -30,6 +31,7 @@
               "src/styles.css"
             ],
             "scripts": []
+           
           },
           "configurations": {
             "production": {
@@ -79,6 +81,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              
+    
               {
                 "glob": "**/*",
                 "input": "public"
