@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
   constructor(private http: HttpClient, private Router: Router) {}
-  API_URL = 'http://localhost:3000';
+  API_URL = environment.apiUrl;
 
   registerUser = (userName: string, email: string, password: string) => {
     const user = { userName, email, password };
