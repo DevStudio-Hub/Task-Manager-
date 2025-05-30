@@ -1,1 +1,70 @@
-<p>registration works!</p>
+<app-error-show [showError]="showError"  [showMessage]="showErrorMessage"></app-error-show>
+
+<div class="register-container">
+ 
+  <ng-container *ngIf="!isOtpScreen">
+    <div class="register-form">
+      <div class="form-box" >
+        <h2>Create Account</h2>
+
+        <input type="text" placeholder="Full Name" [(ngModel)]="fullName" required />
+        <input type="email" placeholder="Email" [(ngModel)]="email" required />
+
+        <div class="password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            [(ngModel)]="password"
+            required
+          />
+          <span (click)="togglePassword()" class="toggle-password">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </span>
+        </div>
+
+        <div class="password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Confirm Password"
+            [(ngModel)]="confirmPassword"
+            required
+          />
+        </div>
+
+        <button (click)="onRegister()">Register</button>
+      </div>
+    </div>
+  </ng-container>
+
+ 
+  <ng-container *ngIf="isOtpScreen">
+    <div class="otp-section">
+      <div class="otp-box">
+        <h2>Enter OTP</h2>
+        <p>We’ve sent a 4-digit code to {{ email }}</p>
+
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" [(ngModel)]="otp[0]" id="otp0" (input)="moveToNext(0, $event)" />
+          <input type="text" maxlength="1" [(ngModel)]="otp[1]" id="otp1" (input)="moveToNext(1, $event)" />
+          <input type="text" maxlength="1" [(ngModel)]="otp[2]" id="otp2" (input)="moveToNext(2, $event)" />
+          <input type="text" maxlength="1" [(ngModel)]="otp[3]" id="otp3" (input)="moveToNext(3, $event)" />
+        </div>
+
+        <button (click)="onVerify()">Verify OTP</button>
+
+        <div class="otp-options">
+          <a (click)="resendOtp()">Resend OTP</a> |
+          <a (click)="onEditEmail()">Edit Email</a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  
+  <div class="register-image">
+    <div class="gradient-overlay"></div>
+    <img src="https://images.pexels.com/photos/29509500/pexels-photo-29509500/free-photo-of-desk-with-2025-calendar-and-laptop-for-planning.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Register image" /> 
+
+  </div>
+</div>
+

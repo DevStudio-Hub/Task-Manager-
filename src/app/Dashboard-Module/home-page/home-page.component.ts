@@ -3,16 +3,19 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ErrorShowComponent } from '../../error-show/error-show.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [NgClass, NgFor, NgIf, FormsModule],
+  imports: [NgClass, NgFor, NgIf, FormsModule, ErrorShowComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent implements OnInit {
   constructor(private taskService: TaskService, private Router: Router) {}
+  showError = false;
+  showErrorMessage = '';
 
   sideBarIems = [
     'All Task',
@@ -43,31 +46,88 @@ export class HomePageComponent implements OnInit {
     this.taskService.clearUpdateTask();
     this.Router.navigate(['/add-item']);
   }
+  isLogin = false;
+
+  username: string = localStorage.getItem('userName') || 'Guest';
+  user_id = localStorage.getItem('user_id');
+
+  onLogin() {
+    this.Router.navigate(['/login']);
+    
+  }
+  
+  
+  
 
   ngOnInit() {
-    this.model = this.taskService.getTasks();
+    if(!this.user_id){
+      this.isLogin = false;
+      this.Router.navigate(['/login']);
+      return;
+    }
+     this.isLogin = true;
+    this.taskService.getData(this.user_id).subscribe({
+      next: (res: any) => {
+        if (!res.success) {
+          console.log(res);
+          this.showError = true;
+          this.showErrorMessage = res.message;
+        }
+        this.tasks = res.task.map((task: any) => {
+          const date = new Date(task.dueTime);
+          const options: Intl.DateTimeFormatOptions = {
+            weekday: 'short',
+            month: 'short',
+            day: '2-digit',
+          };
+          let formattedDate = date
+            .toLocaleDateString('en-US', options)
+            .replace(',', '');
 
-    this.tasks = this.model.map((task) => {
-      const date = new Date(task.date);
-      const options: Intl.DateTimeFormatOptions = {
-        weekday: 'short',
-        month: 'short',
-        day: '2-digit',
-      };
-      let formattedDate = date
-        .toLocaleDateString('en-US', options)
-        .replace(',', '');
+          return {
+            ...task,
+            date: formattedDate,
+          };
+        });
+      },
+    });
 
-      return {
-        ...task,
-        date: formattedDate,
-      };
+    
+  }
+
+  logout() {
+    console.log('click');
+    this.taskService.logout().subscribe((res: any) => {
+      if (res.success) {
+        this.isLogin = false;
+        localStorage.removeItem('userName');
+        localStorage.removeItem('user_id');
+        this.Router.navigate(['/login']);
+      }
+      console.log(res);
+      console.log('no res');
     });
   }
 
   onDeleteTask(taskTitle: string) {
-    this.taskService.deleteTaskByTitle(taskTitle);
-    this.tasks = this.tasks.filter((task) => task.title !== taskTitle);
+    const deletedTask: any = this.tasks.find(
+      (task) => task.title === taskTitle
+    );
+    console.log(this.tasks);
+    this.taskService.deleteData(deletedTask.title, this.user_id).subscribe({
+      next: (res: any) => {
+        if (!res.success) {
+          this.showError = true;
+          this.showErrorMessage = res.message;
+          console.log(res);
+        }
+
+        this.tasks = this.tasks.filter((task) => task.title !== taskTitle);
+      },
+      error: (err) => {
+        console.error('Error deleting task:', err);
+      },
+    });
   }
 
   search = '';
@@ -98,7 +158,7 @@ export class HomePageComponent implements OnInit {
         break;
       case 'High Priorty':
         filtered = filtered.filter(
-          (task) => task.status.toLowerCase() === 'high priorty'
+          (task) => task.status.toLowerCase() === 'high priority'
         );
         break;
       case 'Due Today':
