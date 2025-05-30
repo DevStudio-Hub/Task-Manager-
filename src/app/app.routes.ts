@@ -6,6 +6,8 @@ import { UserProfilePageComponent } from './Profile/user-profile-page/user-profi
 import { LoginPageComponent } from './Auth-module/login-page/login-page.component';
 import { RegistrationComponent } from './Auth-module/registration/registration.component';
 
+import { ErrorShowComponent } from './error-show/error-show.component';
+
 export const routes: Routes = [
    {path: "", component: LogoPageComponent},
    {path: "home", component: HomePageComponent },
@@ -13,4 +15,5 @@ export const routes: Routes = [
    {path: "profile", component: UserProfilePageComponent},
    { path: "login", component: LoginPageComponent },
     { path: "registration", component: RegistrationComponent },
+    
 ];

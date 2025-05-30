@@ -1,8 +1,14 @@
+<app-error-show [showError]="showError"  [showMessage]="showErrorMessage"></app-error-show>
 <div class="home-comtener">
   <div class="nav-contener">
     <h1>Task Manager</h1>
+    <h1>{{ username }}</h1>
     <button class="add-task" (click)="onAddTask()">Add Task</button>
-    <button class="Login-btn" (click)="onLogin()">Login</button>
+    <button class="Login-btn" (click)="onLogin()" *ngIf="!isLogin; else notLogin">Login</button>
+    <ng-template #notLogin>
+      <button class="Login-btn" (click)="logout()">Logout</button>  
+    </ng-template>
+    
   </div><div class="content">
     
     <div class="slide-bar">

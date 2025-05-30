@@ -1,4 +1,4 @@
-
+<app-error-show [showError]="showError"  [showMessage]="showErrorMessage"></app-error-show>
 
   <div class="login-signup-container">
     <div class="welcome-message">
@@ -7,20 +7,20 @@
     </div>
 
     <div class="form-container">
-      <form class="signup-form">
+      <form class="signup-form" >
         <h2 class="title">Login</h2>
 
         <div class="input-container">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email" required />
+          <input type="email" name="email" placeholder="Email" [(ngModel)]="email" required />
         </div>
 
         <div class="input-container">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required />
+          <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required />
         </div>
 
-        <button type="submit" class="button-submit">Login</button>
+        <button type="submit" class="button-submit" (click)="onLogin()">Login</button>
         <p>Don't have an account?<a routerLink="/registration"> <span>Register</span></a></p>
       </form>
     </div>
