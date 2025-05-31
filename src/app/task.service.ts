@@ -82,10 +82,9 @@ export class TaskService {
   };
 
   deleteData = (title: string, user_ID: string | null) => {
-    return this.http.post(
+    return this.http.request('DELETE',
       `${this.API_URL}/api/task/deletetask`,
-      { title, user_ID },
-      { withCredentials: true }
+      { body: { title, user_ID }, withCredentials: true }
     );
   };
 updateTaskAPI(
@@ -96,7 +95,7 @@ updateTaskAPI(
   dueTime: Date,
   user_ID: string
 ) {
-  return this.http.post(`${this.API_URL}/api/task/updatetask`, {
+  return this.http.put(`${this.API_URL}/api/task/updatetask`, {
     befortitle,
     aftertitle,
     description,
